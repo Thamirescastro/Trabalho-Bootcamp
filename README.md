@@ -1,1 +1,162 @@
 # Trabalho-Bootcamp
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário Interativo</title>
+  <style>
+    /* Resetando margens e paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      background: linear-gradient(135deg, #464fa8, #0d1358);
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    input {
+      width: 80%;
+      padding: 15px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #080d3b;
+      outline: none;
+      box-shadow: 0 0 5px rgba(42, 59, 255, 0.5);
+    }
+
+    button {
+      padding: 15px;
+      width: 80%;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .error {
+      color: #ff4c4c;
+    }
+
+    .success {
+      color: #4caf50;
+    }
+
+    .message-container {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulário de Boas-Vindas</h1>
+    <p>Preencha os campos abaixo para receber sua mensagem personalizada.</p>
+
+    <form id="form">
+      <input type="text" id="nome" placeholder="Digite seu nome" required />
+      <input type="number" id="idade" placeholder="Digite sua idade" required />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div class="message-container">
+      <div id="errorMessage" class="message error"></div>
+      <div id="successMessage" class="message success"></div>
+    </div>
+  </div>
+
+  <script>
+    // Selecionando os elementos
+    const form = document.getElementById("form");
+    const nomeInput = document.getElementById("nome");
+    const idadeInput = document.getElementById("idade");
+    const errorMessage = document.getElementById("errorMessage");
+    const successMessage = document.getElementById("successMessage");
+
+    // Função de validação
+    function validarFormulario(nome, idade) {
+      if (!nome || !idade) {
+        return "Por favor, preencha todos os campos!";
+      }
+      if (idade < 0 || idade > 120) {
+        return "A idade deve ser entre 0 e 120 anos!";
+      }
+      return null;  // Nenhum erro
+    }
+
+    // Evento de envio do formulário
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Limpar mensagens anteriores
+      errorMessage.textContent = "";
+      successMessage.textContent = "";
+
+      // Obter valores dos inputs
+      const nome = nomeInput.value.trim();
+      const idade = parseInt(idadeInput.value);
+
+      // Validar os dados
+      const error = validarFormulario(nome, idade);
+
+      if (error) {
+        // Exibir mensagem de erro
+        errorMessage.textContent = error;
+      } else {
+        // Exibir mensagem de sucesso
+        successMessage.textContent = `Olá, ${nome}! Você tem ${idade} anos. Bem-vindo! “Se a vida te der limões, faça uma limonada… e adicione uma pitada de tequila!” 🍋😄`;
+      }
+    });
+  </script>
+</body>
+</html>
