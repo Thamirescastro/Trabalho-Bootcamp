@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio Bootcamp</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Meu Portfólio</h1>
+  </header>
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Olá, me chamo Thamires.</h2>
+      <p>Transformando ideias em experiências incríveis.</p>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+  <div class="container">
+    <h2>Sobre Mim</h2>
+    <p>Me chamo Thamires. Sou estudante de Ciências da Computação e estou atualmente no meu primeiro semestre.</p>
+    <p>Estou aprendendo C, MySQL e um pouco de HTML. Ainda não tenho experiências profissionais, mas estou muito animada para começar minha jornada na tecnologia!</p>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 MeuPortfólio. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.onclick = () => {
+      menu.classList.toggle('active');
+    };
+  </script>
+</body>
+</html>
